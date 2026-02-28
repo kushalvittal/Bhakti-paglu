@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Do You Trust Me? 💕</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #ff9a9e, #fad0c4);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .box {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 30px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px;
+            transition: 0.3s;
+        }
+
+        #yesBtn {
+            background-color: #ff4e78;
+            color: white;
+        }
+
+        #yesBtn:hover {
+            background-color: #ff1e56;
+        }
+
+        #noBtn {
+            background-color: #555;
+            color: white;
+            position: absolute;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #ff1e56;
+        }
+
+        .firework {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(8);
+                opacity: 0;
+            }
+        }
+
+        .celebration-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="box">
+    <h1>Do you trust me? 💕</h1>
+
+    <button id="yesBtn" onclick="yesClicked()">Yes 😍</button>
+    <button id="noBtn">No 😏</button>
+
+    <div id="message"></div>
+</div>
+
+<script>
+    const noBtn = document.getElementById("noBtn");
+    const message = document.getElementById("message");
+
+    noBtn.addEventListener("mouseover", function() {
+        const x = Math.random() * (window.innerWidth - 100);
+        const y = Math.random() * (window.innerHeight - 50);
+
+        noBtn.style.left = x + "px";
+        noBtn.style.top = y + "px";
+
+        message.innerText = "Run away from the click 😜";
+    });
+
+    function yesClicked() {
+        document.body.innerHTML = `
+            <div class="celebration-text">
+                <h1>See... I knew you trust me 💖</h1>
+                <h2>You cannot Run bhaktuuuu its godsssss plan!!!!!!!! 😌💕</h2>
+            </div>
+        `;
+
+        document.body.style.background = "black";
+
+        setInterval(createFirework, 200);
+    }
+
+    function createFirework() {
+        const firework = document.createElement("div");
+        firework.classList.add("firework");
+
+        firework.style.left = Math.random() * window.innerWidth + "px";
+        firework.style.top = Math.random() * window.innerHeight + "px";
+
+        const colors = ["#ff4e78", "#ffd700", "#00ffff", "#ff00ff", "#00ff00", "#ffffff"];
+        firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+
+        document.body.appendChild(firework);
+
+        setTimeout(() => {
+            firework.remove();
+        }, 1000);
+    }
+</script>
+
+</body>
+</html>
